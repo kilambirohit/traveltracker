@@ -10,10 +10,15 @@
     <h1>Travel Tracker</h1>
     <div>
         <input type="text" id="country" placeholder="Enter country name">
+        <select id="trip-type">
+            <option value="International">International Trip</option>
+            <option value="Domestic">Within the Country</option>
+        </select>
         <select id="visa-status">
             <option value="Required">Visa Required</option>
             <option value="Not Required">Visa Not Required</option>
             <option value="On Arrival">Visa On Arrival</option>
+            <option value="Visa Free">Visa Free</option>
         </select>
         <select id="visa-application-status" style="display: none;">
             <option value="Application Submitted">Application Submitted</option>
@@ -21,6 +26,7 @@
             <option value="Visa Received">Visa Received</option>
         </select>
         <input type="text" id="visa-info" placeholder="Enter visa information">
+        <input type="number" id="budget" placeholder="Enter budget in USD">
         <button id="add-country">Add Country</button>
     </div>
     <ul id="country-list"></ul>
