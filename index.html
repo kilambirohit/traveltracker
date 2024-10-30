@@ -4,33 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Travel Tracker</h1>
-    <div>
-        <input type="text" id="country" placeholder="Enter country name">
-        <select id="trip-type">
-            <option value="International">International Trip</option>
-            <option value="Domestic">Within the Country</option>
-        </select>
-        <select id="visa-status">
-            <option value="Required">Visa Required</option>
-            <option value="Not Required">Visa Not Required</option>
-            <option value="On Arrival">Visa On Arrival</option>
-            <option value="Visa Free">Visa Free</option>
-        </select>
-        <select id="visa-application-status" style="display: none;">
-            <option value="Application Submitted">Application Submitted</option>
-            <option value="Visa Processed">Visa Processed</option>
-            <option value="Visa Received">Visa Received</option>
-        </select>
-        <input type="text" id="visa-info" placeholder="Enter visa information">
-        <input type="number" id="budget" placeholder="Enter budget in USD">
-        <button id="add-country">Add Country</button>
+    <div class="container">
+        <h1>Travel Tracker</h1>
+        <form id="travel-form">
+            <input type="text" id="country" placeholder="Country Name" required>
+            <input type="text" id="flight" placeholder="Flight Details" required>
+            <textarea id="notes" placeholder="Notes" rows="4"></textarea>
+            <textarea id="itinerary" placeholder="Itinerary" rows="4"></textarea>
+            <input type="number" id="budget" placeholder="Budget in £" required>
+            <button type="submit">Add Country</button>
+        </form>
+        <ul id="country-list"></ul>
     </div>
-    <ul id="country-list"></ul>
-
     <script src="script.js"></script>
 </body>
 </html>
