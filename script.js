@@ -1,49 +1,43 @@
-const form = document.getElementById('travel-form');
-const countryList = document.getElementById('country-list');
+<script>
+        document.getElementById("travel-form").addEventListener("submit", function (e) {
+            e.preventDefault();
 
-let countries = JSON.parse(localStorage.getItem('countries')) || [];
+            // Get form values
+            const country = document.getElementById("country").value;
+            const budget = document.getElementById("budget").value;
 
-// Function to render countries
-function renderCountries() {
-    countryList.innerHTML = '';
-    countries.forEach((country) => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <strong>${country.name}</strong><br>
-            Flight: ${country.flight}<br>
-            Notes: ${country.notes}<br>
-            Itinerary: ${country.itinerary}<br>
-            Budget: £${country.budget}
-        `;
-        countryList.appendChild(li);
-    });
-}
+            // Add to the country list
+            const countriesList = document.getElementById("countries");
+            const newCountry = document.createElement("li");
 
-// Add country to the list
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const countryName = document.getElementById('country').value;
-    const flightDetails = document.getElementById('flight').value;
-    const notes = document.getElementById('notes').value;
-    const itinerary = document.getElementById('itinerary').value;
-    const budget = document.getElementById('budget').value;
+            // Add country details with a remove button and mark as done button
+            newCountry.innerHTML = `
+                <span>${country} - £${budget}</span>
+                <div>
+                    <button class="done-button">Mark as Done</button>
+                    <button class="remove-button">Remove</button>
+                </div>
+            `;
 
-    const newCountry = {
-        name: countryName,
-        flight: flightDetails,
-        notes: notes,
-        itinerary: itinerary,
-        budget: budget
-    };
+            countriesList.appendChild(newCountry);
 
-    countries.push(newCountry);
-    localStorage.setItem('countries', JSON.stringify(countries));
-    renderCountries();
+            // Show confirmation message
+            const confirmation = document.getElementById("confirmation");
+            confirmation.classList.remove("hidden");
+            setTimeout(() => confirmation.classList.add("hidden"), 2000);
 
-    // Clear form inputs
-    form.reset();
-});
+            // Clear form
+            document.getElementById("travel-form").reset();
+        });
 
-// Initial rendering of countries
-renderCountries();
+        // Event delegation to handle click events on dynamically added buttons
+        document.getElementById("countries").addEventListener("click", function (e) {
+            if (e.target.classList.contains("remove-button")) {
+                const listItem = e.target.parentElement.parentElement;
+                listItem.remove(); // Remove the country item
+            } else if (e.target.classList.contains("done-button")) {
+                const listItem = e.target.parentElement.parentElement;
+                listItem.classList.toggle("completed"); // Mark as completed
+            }
+        });
+    </script>
