@@ -4,21 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .add-button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .add-button:hover {
+            background-color: #218838;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #country-list {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        #country-list h2 {
+            color: #555;
+        }
+
+        #countries {
+            list-style: none;
+            padding: 0;
+        }
+
+        #countries li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remove-button, .done-button {
+            margin-left: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .done-button {
+            background-color: #007bff;
+        }
+
+        .remove-button:hover {
+            background-color: #c82333;
+        }
+
+        .done-button:hover {
+            background-color: #0056b3;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            background-color: #d4edda;
+            color: #155724;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Travel Tracker</h1>
         <form id="travel-form">
-            <input type="text" id="country" placeholder="Country Name" required>
-            <input type="text" id="flight" placeholder="Flight Details" required>
-            <textarea id="notes" placeholder="Notes" rows="4"></textarea>
-            <textarea id="itinerary" placeholder="Itinerary" rows="4"></textarea>
-            <input type="number" id="budget" placeholder="Budget in £" required>
-            <button type="submit">Add Country</button>
+            <label for="country">Country Name:</label>
+            <input type="text" id="country" placeholder="E.g., France" required>
+
+            <label for="flight">Flight Details:</label>
+            <input type="text" id="flight" placeholder="E.g., Airline and flight number">
+
+            <label for="notes">Notes:</label>
+            <textarea id="notes" placeholder="E.g., Visa requirements, packing tips"></textarea>
+
+            <label for="itinerary">Itinerary:</label>
+            <textarea id="itinerary" placeholder="E.g., Day 1: Visit Eiffel Tower"></textarea>
+
+            <label for="budget">Budget (£):</label>
+            <input type="number" id="budget" placeholder="E.g., 1500" required>
+
+            <button type="submit" class="add-button">Add Country</button>
         </form>
-        <ul id="country-list"></ul>
+        <div id="confirmation" class="hidden">Country added successfully!</div>
+        <div id="country-list">
+            <h2>Added Countries</h2>
+            <ul id="countries"></ul>
+        </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
